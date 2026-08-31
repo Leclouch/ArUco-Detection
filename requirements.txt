@@ -1,0 +1,14 @@
+# Dependencies proyek ArUco Marker Detection (divisi Vision)
+#
+# Diuji pada: Python 3.14 (64-bit), opencv-contrib-python 5.0.0.93, numpy 2.5.2
+#
+# Catatan versi OpenCV:
+#   - Sejak OpenCV 4.7 modul ArUco sudah pindah dari contrib ke modul inti
+#     (objdetect), jadi paket "opencv-python" biasa pun sebenarnya cukup.
+#     Kita tetap pakai varian -contrib supaya proyek ini aman kalau nanti
+#     butuh modul contrib lain, dan tetap jalan di OpenCV lama (<4.7).
+#   - Jangan pasang "opencv-python" DAN "opencv-contrib-python" bersamaan di
+#     satu environment: keduanya menyediakan modul cv2 dan akan saling timpa.
+
+opencv-contrib-python>=4.7
+numpy>=1.24
