@@ -1,4 +1,4 @@
-![Alt text](assets\banner.png "Title")
+![Alt text](assets/banner.png "Title")
 
 <h1 align="center">ArUco Marker Detection + Pose Estimation</h1>
 
