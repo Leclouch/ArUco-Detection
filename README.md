@@ -34,11 +34,11 @@ Cara pakainya:
 
 **Kalau tidak punya printer:** tampilkan marker di layar HP/tablet dalam mode *fullscreen* dengan kecerahan tinggi. Deteksi akan tetap jalan dan ini sudah cukup untuk requirement wajib. Tapi untuk pose estimation, **ukur dulu sisi hitam di layar pakai penggaris** lalu sesuaikan angkanya di kode — kalau tidak, semua jaraknya akan salah. Hati-hati juga dengan pantulan cahaya dan *auto-brightness* yang bikin kontras naik-turun.
 
-> ✂️ Kalau digunting, **sisakan margin putih** di keempat sisi marker. Alasannya ada di bagian **Catatan Teknis** — ini bukan soal rapi-rapian, marker tanpa margin putih bisa gagal terdeteksi total.
+> ✂️ Kalau digunting, **sisakan margin putih** di keempat sisi marker. Ini bukan soal rapi-rapian — marker tanpa margin putih bisa gagal terdeteksi total karena OpenCV menggunakan white border untuk identifikasi.
 
 ---
 
-## Tugasmu
+## Tugasmu!!!
 
 ### Wajib
 
@@ -66,7 +66,7 @@ Cara pakainya:
 |---|---|---|
 | 1 | **Link repo GitHub** | Hasil fork. Pastikan repo-nya **publik** supaya bisa dibuka. |
 | 2 | **Link video YouTube** | Boleh *unlisted*. Durasi singkat, menunjukkan minimal **3 ID berbeda** terdeteksi dengan label peran yang benar. Kalau mengerjakan bonus, tunjukkan juga axis 3D + jarak/orientasi. |
-| 3 | **Dokumentasi** | Cukup update `README.md` di repo yang sama — tidak perlu file terpisah. |
+| 3 | **Dokumentasi** | Cukup buat `SUBMISI.md` di repo yang sama — isinya dokumentasi kode dan link video youtube juga |
 
 > ⚠️ Video harus menunjukkan **kode benar-benar jalan**, bukan screenshot statis.
 
@@ -78,15 +78,14 @@ Kalau bingung mau mulai dari mana, ikuti urutan ini:
 
 1. **Siapkan marker dulu** dari [chev.me/arucogen](https://chev.me/arucogen/) — lihat bagian paling atas README ini. Tanpa ini kamu tidak punya bahan untuk menguji apa pun.
 2. **Setup environment** — lihat bagian **Instalasi** di bawah. Pastikan `import cv2` sukses sebelum lanjut.
-3. **Baca bagian Catatan Teknis**, khususnya soal API OpenCV yang berubah. Ini penyebab stuck nomor satu, dan cuma butuh 5 menit baca.
-4. **Tulis `detect_markers.py` bertahap**, jangan langsung semuanya sekaligus:
+3. **Tulis `detect_markers.py` bertahap**, jangan langsung semuanya sekaligus:
    - buka webcam → tampilkan frame di window → pastikan bisa keluar pakai tombol `q`
    - deteksi marker → print ID-nya ke terminal dulu, belum usah digambar
    - gambar bounding box
    - tambahkan label peran
    - *(bonus)* pose estimation → axis 3D → teks jarak & sudut
-5. **Rekam video demo.**
-6. **Isi semua bagian yang ditandai ** di README ini.
+4. **Rekam video demo.**
+5. **Buat dokumentasi**
 
 ---
 
@@ -130,9 +129,29 @@ penugasan_Vision_heroes/
 
 ---
 
+##  Hardware Requirements
+
+- **Webcam/Kamera USB:** resolusi minimal 640×480, sudah cukup untuk deteksi. Kamera laptop/built-in OK.
+- **Lighting:** ruangan dengan cahaya yang cukup, hindari backlight langsung ke marker (akan terlihat silhouette).
+- **Marker fisik:** kertas putih A4 dengan marker 100mm yang sudah diprint, atau layar HP/tablet dengan brightness tinggi.
+
+---
+
 ##  Instalasi
 
 **Prasyarat:** Python 3.9 atau lebih baru.
+
+### requirements.txt
+
+File ini berisi daftar Python packages yang dibutuhkan:
+
+```
+opencv-contrib-python>=4.5.0
+numpy>=1.19.0
+```
+
+- **opencv-contrib-python** — versi lengkap OpenCV dengan modul ArUco (bukan `opencv-python` saja)
+- **numpy** — dependency OpenCV, untuk operasi array dan matrix
 
 ### 1. Clone repo
 
@@ -174,7 +193,7 @@ pip install -r requirements.txt
 python -c "import cv2; print(cv2.__version__, hasattr(cv2, 'aruco'))"
 ```
 
-Harus mencetak nomor versi dan `True`. Kalau `aruco` bernilai `False` atau muncul `ImportError`, lihat bagian **Troubleshooting**.
+Harus mencetak nomor versi dan `True`. Kalau `aruco` bernilai `False` atau muncul `ImportError`, kemungkinan OpenCV versi lama — update dengan `pip install --upgrade opencv-contrib-python`.
 
 ---
 
@@ -187,7 +206,9 @@ Harus mencetak nomor versi dan `True`. Kalau `aruco` bernilai `False` atau muncu
 | [Dokumentasi ArUco OpenCV](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html) | Tutorial resmi deteksi marker |
 | [Dokumentasi kalibrasi kamera OpenCV](https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html) | Kalau mau kalibrasi presisi sendiri pakai checkerboard |
 
+
 ---
+![Alt text](assets/banner2.png "Title")
 
 ___
 <p align="center">
